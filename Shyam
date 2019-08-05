@@ -1,0 +1,142 @@
+package javaapplication3;
+import java.util.Scanner;
+
+public class JavaApplication3 {
+
+
+    public static void main(String[] args) {
+                Scanner inp=new Scanner(System.in);
+        int i,j = 0,high,b=0,c=0,opt,g;
+        String e1,e2,e=" ";
+        
+        //int[] PN=new int[15];
+        //String [] DT=new String[15];
+        int PT[] = {22,119,64,177,21,22,111,87,193,22,11,107,93,162,42};
+        
+        String  DP[]={"Monday 6.04","Monday 9.04","Monday 12.04","Monday 15.04","Monday 19.04",
+                    "Tuesday 6.04","Tuesday 9.04","Tuesday 12.04","Tuesday 15.04","Tuesday 19.04",
+                    "Wednesday 6.04","Wednesday 9.04","Wednesday `12.04","Wednesday 15.04","Wednesday 19.04"};
+       do{
+        System.out.println("1.Display the train details ...\n2.Finding most popular train... \n3.Finding the least popular train..."
+               + "\n4.Finding popularity(6.04 & 9.04).... \n5.Finding popularity of 6.04(Mon..& Tue..) \n6.Finding with Query.... \n7.Trains have PN<50.. \n8.Calculating the Average PN @12.04...\n9.Calculating the average with Query... \n10.Quit\nEnter operation to perform  ");
+      opt=inp.nextInt();
+      high=PT[0];
+      String s=DP[0];
+      
+        if (opt==10)
+            System.exit(0);
+        
+        
+      
+      
+      
+        else if(opt==1){//displaying trains....
+                System.out.println("Displaying the datails.....\n "
+                  + "Day DepatureTime   No.of.Passengers ");
+                    for(j=0;j<=14;j++){
+                        System.out.print("  "+DP[j]+"   "+PT[j]+"\n");
+                    }
+                    }
+         else if(opt==2){//finding popularity.....
+                System.out.print("Finding the most popular.... ");
+                     for(j=1;j<=14;j++){
+                       if((high<=PT[j])){
+                             high=PT[j];
+                             e=DP[j];
+                             
+                       }
+                       
+                       }
+                     System.out.println("the most popular trsin is "+high+" "+e);
+      }
+         else if(opt==3){//finding least one....
+                System.out.print("Fining the least.... ");
+                    int high1=PT[0];
+                    String f=DP[0];
+                     for(j=1;j<=14;j++){
+                         if(PT[j]<=high1){
+                             high1=PT[j];
+                             e=DP[j];
+                       }
+                   }
+                     System.out.println(high1+" "+e);
+      }
+                     
+        else  if(opt==4){//findind b/w 6.04&9.04 
+              for(i=0;i<=14;i+=5){
+                if(high<=PT[i+1]){
+                      high=PT[i+1];
+                      e=DP[i];
+                    }
+                    System.out.println(high+" "+e);
+                    if(i<=14)
+                        high=PT[i];
+                    
+              }      
+                   
+          }
+          
+          
+          else if(opt==5)
+              System.out.println(" No both have same popularity of   "+PT[0]);
+                  
+          
+        else if(opt==6){ 
+                    int c1=0,j1=0;
+                   System.out.println("Enter  day and timings required one..!");
+                   e1=inp.next();
+                   for(i=0;i<=14;i++)
+                    {
+                        if(DP[i].equals(e1))
+                            c1=i;
+                    }
+                   System.out.println("Enter  day and timings required one..!");
+                   e2=inp.next();
+                    for(i=0;i<=14;i++)
+                    {
+                        if(DP[i].equals(e2))
+                            j1=i;
+                        
+                    }
+                    
+                    if(PT[c1]>PT[j1])
+                           System.out.println("the details "+DP[c1]+" "+PT[c1]);
+                    else if(true)
+                           System.out.println("the details "+DP[j1]+" "+PT[j1]);
+         
+        }
+                        
+                    
+           
+      else if(opt==7){ //pn values is less than 50...
+                  System.out.println("The trains where passengers below 50");
+                     for(i=0;i<=14;i++){
+                         if (PT[i]<50){
+                            System.out.println("the details"+DP[i]+" "+PT[i]);
+                   
+                        }
+                     }}
+                     
+         else if(opt==8)
+              System.out.println("the average of passengers @12.04"+((PT[7]+PT[2]+PT[12])/3));        
+                    
+                    
+         else if(opt==9){   
+                    System.out.println("Enter the  day and time_  ");
+                    e1=inp.next();
+                    for(i=0;i<=14;i++){
+                    if(DP[i].equals(e1))
+                    System.out.println("The passengers average @"+DP[i]+" "+((PT[i])));
+                    }
+                          }
+                    
+            
+          else if(opt>10)
+              System.out.println("Invalid operation.....");
+                    
+                    
+                    
+        
+        }while(true);
+                     }
+        }
